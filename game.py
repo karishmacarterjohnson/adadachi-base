@@ -51,10 +51,11 @@ def start_game():
 # add poop graphic to clean()
 # format poop level in clean()
 # add food collection options
-# upgrade food to dict
 # settings menu
+
 
 # fin
 # add pronouns to game beginning
 # add food preference
 # determine food list based on this
+# upgrade food to dict

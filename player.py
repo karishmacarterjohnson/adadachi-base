@@ -11,9 +11,13 @@ class Player():
             "foods": None
         }
     
+    def _decorator(func):
+        def wrapped(self, *args, **kwargs):
+            print(STR_TOP)
+            func(self, *args, **kwargs)
+            print(STR_BOT)
+        return wrapped
 
-
-    ### decorator for pre & post stringing
 
     def get_status(self):
         status_entry = STATUS
@@ -30,38 +34,37 @@ class Player():
         print(status_entry)   
 
 
-
+    @_decorator
     def clean(self):
         keep_pooping = True
         while self.adadachi.poop_lvl > 0 and keep_pooping:
             self.adadachi.poop_lvl -= 1
             print(POOP_STATUS_TOP)
-            print(f'^  ') 
-            print(self.adadachi.poop_lvl)
+            print(f"^ {' '*16}POOP LEVEL : {self.adadachi.poop_lvl}{' '*18}^") 
             ## add poop_lvl formatting
-            print(POOP_STATUS_BOT)
-            keep_pooping = continue_activity()  
+            if self.adadachi.poop_lvl > 0:
+                keep_pooping = continue_activity()  
             
-
+    @_decorator
     def feed(self):
-        print(self.inventory["foods"])
         keep_eating = True
         while len(self.inventory["foods"]) > 0 and keep_eating:
-            # display options
-            print(FOOD_MENU + "\n")
+            print(FOOD_MENU)
             for key, value in self.inventory["foods"].items():
                 print(LINEBREAK)
                 print(key, value) # format
-            food_choice = input("Enter name of the food").lower() # format
+            food_choice = input("Enter name of the food \n\t").lower() # format
             try: 
                 if self.inventory["foods"][food_choice] > 1:
                     self.inventory["foods"][food_choice] -= 1
                     self.hunger -=1 
+                    
                 else:
                     self.inventory["foods"].pop(food_choice)  
                 ### add ascii to show success
+                self.adadachi.poop_lvl +=1 
                 print("yum")       
             except:
-                print("you don't have that food. you can try again.")
+                print(f"{self.adadachi.name} doesn't have that food. you can try again.")
             # cute eating ascii art
             keep_eating = continue_activity()
