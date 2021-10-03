@@ -8,9 +8,13 @@ player = Player()
 def display(statement):
     print(statement)
 
+def diet_chooser():
+    pass
 
 def create_adadachi():
     name = input(GET_NAME + "\n\t")
+    pronouns = input(GET_PRONOUNS + "\n\t")
+
     foods = player.inventory["foods"]
     games = player.inventory["games"]
     personality = {
@@ -19,7 +23,7 @@ def create_adadachi():
         "hates_food": random.randint(0,len(foods)),
         "hates_game": random.randint(0,len(games)),
     }
-    player.adadachi = Adadachi(name,personality)
+    player.adadachi = Adadachi(name,pronouns, personality)
 
 
 def start_game():
@@ -45,3 +49,13 @@ def start_game():
                 return display(EXIT)
         
         display(LOST)
+
+# add food preference
+# determine food list based on this
+# add poop graphic to clean()
+# format poop level in clean()
+# add food collection options
+
+
+# fin
+# add pronouns to game beginning

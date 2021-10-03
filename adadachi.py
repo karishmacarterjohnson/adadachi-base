@@ -1,6 +1,7 @@
 class Adadachi:
-    def __init__(self, name, personality):
+    def __init__(self, name, pronouns, personality):
         self.name = name
+        self.pronouns = pronouns
         self.hunger = 2
         self.happiness = 1
         self.personality = personality
