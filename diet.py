@@ -1,8 +1,23 @@
 from constants import *
 
-herbivore_foods = ["carrot sticks", "mashed potatoes", "strawberries"]
-carnivore_foods = ["steak", "beef stew", "chicken"]
-omnivore_foods = herbivore_foods + carnivore_foods
+herbivore_foods = {
+    "carrot sticks": 2,
+    "mashed potatoes": 2, 
+    "strawberries": 2 
+}
+carnivore_foods = {
+    "steak": 2,
+    "beef stew": 2, 
+    "chicken": 2
+}
+omnivore_foods = {
+    "carrot sticks": 1,
+    "mashed potatoes": 1, 
+    "strawberries": 1,
+    "steak": 1,
+    "beef stew": 1, 
+    "chicken": 1
+}
 
 
 def diet_chooser():
@@ -16,4 +31,3 @@ def diet_chooser():
         elif diet_choice.lower() == "c":
             foods = carnivore_foods
     return foods
-    

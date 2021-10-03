@@ -13,7 +13,6 @@ def display(statement):
 def create_adadachi():
     name = input(GET_NAME + "\n\t")
     pronouns = input(GET_PRONOUNS + "\n\t")
-
     foods = diet_chooser()
     games = player.inventory["games"]
     personality = {
@@ -49,12 +48,13 @@ def start_game():
         
         display(LOST)
 
-# add food preference
-# determine food list based on this
 # add poop graphic to clean()
 # format poop level in clean()
 # add food collection options
-
+# upgrade food to dict
+# settings menu
 
 # fin
 # add pronouns to game beginning
+# add food preference
+# determine food list based on this
