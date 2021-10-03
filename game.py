@@ -1,6 +1,7 @@
 from player import Player
 from adadachi import Adadachi
 from constants import *
+from diet import *
 import random
 
 player = Player()
@@ -8,14 +9,12 @@ player = Player()
 def display(statement):
     print(statement)
 
-def diet_chooser():
-    pass
 
 def create_adadachi():
     name = input(GET_NAME + "\n\t")
     pronouns = input(GET_PRONOUNS + "\n\t")
 
-    foods = player.inventory["foods"]
+    foods = diet_chooser()
     games = player.inventory["games"]
     personality = {
         "fav_food": random.randint(0,len(foods)),
@@ -23,8 +22,8 @@ def create_adadachi():
         "hates_food": random.randint(0,len(foods)),
         "hates_game": random.randint(0,len(games)),
     }
-    player.adadachi = Adadachi(name,pronouns, personality)
-
+    player.adadachi = Adadachi(name, pronouns, personality)
+    player.inventory["foods"] = foods
 
 def start_game():
     display(TITLE)
