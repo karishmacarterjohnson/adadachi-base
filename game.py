@@ -49,7 +49,7 @@ def start_game():
         display(LOST)
 
 # add poop graphic to clean()
-# format poop level in clean()
+
 # add food collection options
 # settings menu
 
@@ -59,3 +59,4 @@ def start_game():
 # add food preference
 # determine food list based on this
 # upgrade food to dict
+# format poop level in clean()

@@ -18,7 +18,7 @@ class Player():
             print(STR_BOT)
         return wrapped
 
-
+    @_decorator
     def get_status(self):
         status_entry = STATUS
         features = ['name', 'pronouns', 'hunger', 'happiness', 'poop_lvl']
@@ -30,7 +30,7 @@ class Player():
                          + feature.upper() + (space_req - len(feature))*' ' + ': ' \
                          + str(getattr(self.adadachi, feature)) \
                          + (space_rem - len(str(getattr(self.adadachi, feature))))*' ' \
-                         +  '  ^\n'
+                         +  '  ^'
         print(status_entry)   
 
 
@@ -40,7 +40,7 @@ class Player():
         while self.adadachi.poop_lvl > 0 and keep_pooping:
             self.adadachi.poop_lvl -= 1
             print(POOP_STATUS_TOP)
-            print(f"^ {' '*16}POOP LEVEL : {self.adadachi.poop_lvl}{' '*18}^") 
+            print(f"^ {' '*16}POOP LEVEL : {self.adadachi.poop_lvl}{' '*17}^") 
             ## add poop_lvl formatting
             if self.adadachi.poop_lvl > 0:
                 keep_pooping = continue_activity()  
@@ -68,3 +68,7 @@ class Player():
                 print(f"{self.adadachi.name} doesn't have that food. you can try again.")
             # cute eating ascii art
             keep_eating = continue_activity()
+
+    @_decorator
+    def play_with_adadachi(self):
+        pass
