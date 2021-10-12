@@ -30,7 +30,7 @@ class Player():
                          + feature.upper() + (space_req - len(feature))*' ' + ': ' \
                          + str(getattr(self.adadachi, feature)) \
                          + (space_rem - len(str(getattr(self.adadachi, feature))))*' ' \
-                         +  '  ^'
+                         +  '  ^\n'
         print(status_entry)   
 
 
@@ -41,6 +41,7 @@ class Player():
             self.adadachi.poop_lvl -= 1
             print(POOP_STATUS_TOP)
             print(f"^ {' '*16}POOP LEVEL : {self.adadachi.poop_lvl}{' '*17}^") 
+            print(LINEBREAK)
             ## add poop_lvl formatting
             if self.adadachi.poop_lvl > 0:
                 keep_pooping = continue_activity()  
@@ -51,17 +52,17 @@ class Player():
         while len(self.inventory["foods"]) > 0 and keep_eating:
             print(FOOD_MENU)
             for key, value in self.inventory["foods"].items():
-                print(LINEBREAK)
-                print(key, value) # format
-            food_choice = input("Enter name of the food \n\t").lower() # format
+                print(LINEBREAK_SKIP)
+                print('^', key ,  value , ' '*(42-len(key)-len(str(value))),'^')
+            print(LINEBREAK)
+            food_choice = input("Enter name of the food \n\t").lower()
             try: 
                 if self.inventory["foods"][food_choice] > 1:
                     self.inventory["foods"][food_choice] -= 1
-                    self.hunger -=1 
-                    
                 else:
                     self.inventory["foods"].pop(food_choice)  
                 ### add ascii to show success
+                self.adadachi.hunger -=1 
                 self.adadachi.poop_lvl +=1 
                 print("yum")       
             except:
@@ -72,3 +73,4 @@ class Player():
     @_decorator
     def play_with_adadachi(self):
         pass
+        # no games yet
